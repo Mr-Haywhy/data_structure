@@ -74,6 +74,11 @@ def selection_sort(lst):
         # swap the smallest element with the first element
         # of the unsorted part 
         lst[min_index], lst[i] = lst[i], lst[min_index]
+
+        # DESCENDING ORDER
+        # IF LST[J] > LST[MIN_INDEX]:
+                # MIN_INDEX = J
+        # LST[I], LST[MIN_INDEX] = LST[MIN_INDEX], LST[I]
         print(lst)
     return lst
 
