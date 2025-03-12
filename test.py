@@ -9,7 +9,7 @@ def bubble_sort(list_a):
                 list_a[j], list_a[j+1] = list_a[j+1], list_a[j]
                 #You print the contents of the array after every swap
                 # print("After pass " + str(i) + ", inner loop "+ str(j) + ": " + str(list_a)) 
-        i -= 1
+        return(list_a)
 
 #The following code is only to test the Bubble Sort, so nothing has to be changed here    
 list_a = [70, 60, 50, 40, 30, 20, 10]
