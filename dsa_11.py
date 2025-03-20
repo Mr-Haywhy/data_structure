@@ -162,3 +162,10 @@ def calculate_node_sum(self):
         sum = current.data
         current = current.next
     return sum
+
+
+
+# Here are some tips on how you can improve:
+
+# Ensure correct use of object instances.
+# Carefully follow linked list structure.
