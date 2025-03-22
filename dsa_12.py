@@ -190,7 +190,66 @@ class LinkedList:
         if self.head:
             self.head = self.head.next
             return
+        
+
 # NOTE: A common practice during delete operation is to return the value of the node being deleted. This helps keep track of which node is being deleted.
+
+
+#...............method to delete node at any given position..............#
+# Suppose we have want to delete the fourth node from this list: (8, 3, 9, 7, 6).
+# To delete the fourth node, we can simply link the third node to the fifth node.
+# 
+# 1. Traverse until the current node is the node at position - 1.
+            ## delete node at this position
+            # position = 4
+            # current = self.head
+                ## the current variable is the node at (position - 1)
+                # for i in range(1, position - 1):
+                    # current = current.next
+# 2. Link the node at position - 1 to position + 1.
+# link the next attribute of the current node to the node at position + 1.
+            # current.next = current.next.next
+
+# NOTE: The above code cannot be used to delete the node at the first position.
+
+
+#....................DELETE NODE AT GIVEN POSITION............#
+# In this program, we have used the delete_node() method to delete the node at the given position.
+# We have also added conditions to:
+    # delete the first node if the position is 1
+    # handle an empty linked list
+    # handle positions greater than the number of nodes
+
+# method to delete a node at the given position
+    def delete_node(self, position):
+        # check if the position is vaild
+        if position <= 0 or position > self.get_length():
+            print("Invalid position")
+            return
+        
+        # if linked list is empty
+        if not self.head:
+            return
+        
+        # condition to delete node at the first position
+        if position == 1:
+            self.head = self.head.next
+            return
+        
+        current = self.head
+
+        # Traverse the list to find the node before the one to be deleted
+        for i in range(1, position - 1):
+            # condition to handle if position is greater than number of nodes
+            if not current.next:
+                return
+            current = current.next
+
+        # current.next is the node to be deleted
+        # current.next.next is the node after the node to be deleted
+        if current.next:
+            current.next = current.next.next
+
 
 
 linked_list = LinkedList()
