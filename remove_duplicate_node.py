@@ -1,8 +1,8 @@
-#................CHECK.IF.A.LINKED.LIST.IS.SORTED...............#
-# To check if a linked list is sorted in ascending order, we need to traverse the list.
-# We compare if the next node is smaller than the current node, we know the linked list is not sorted.
-# But if each node is smaller than the next node right until the end of the linked list, then it is sorted.
+#.................REMOVE.DUPLICATES.FROM.A.SORTED.LINKED.LIST.................#
+# To remove duplicates from a sorted linked list, we need to traverse the linked list and compare subsequent nodes.
+# If the current node and the next node have equal values, we will delete the next node.
 
+# NOTE: The nodes have been inserted in sorted order.
 
 class Node:
     def __init__(self, data):
@@ -74,18 +74,16 @@ class LinkedList:
         print(None)
     
     
-# method to check if a linked list is sorted 
-def is_sorted(self):
-    # empty linked list is considered sorted
+# Method to delete duplicate nodes from sorted list
+def remove_duplicates(self):
+    # condition to handle empty linked list
     if not self.head:
-        return True
-    current = self.head
-        
+        return
+    current = self.head 
     # traverse the linked list
     while current.next:
-        # if current node is greater than next
-        # the linked list is unsorted
-        if current.data > current.next.data:
-            return False
-        current = current.next
-    return True
+        # if current and next nodes are equal delete the next node
+        if current.data == current.next.data:
+            current.next = current.next.next
+        else:
+            current = current.next 
