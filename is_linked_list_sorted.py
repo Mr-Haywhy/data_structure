@@ -73,19 +73,19 @@ class LinkedList:
             current = current.next
         print(None)
     
-    
+
 # method to check if a linked list is sorted 
-def is_sorted(self):
-    # empty linked list is considered sorted
-    if not self.head:
+    def is_sorted(self):
+        # empty linked list is considered sorted
+        if not self.head:
+            return True
+        current = self.head
+            
+        # traverse the linked list
+        while current.next:
+            # if current node is greater than next
+            # the linked list is unsorted
+            if current.data > current.next.data:
+                return False
+            current = current.next
         return True
-    current = self.head
-        
-    # traverse the linked list
-    while current.next:
-        # if current node is greater than next
-        # the linked list is unsorted
-        if current.data > current.next.data:
-            return False
-        current = current.next
-    return True

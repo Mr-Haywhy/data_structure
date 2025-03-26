@@ -73,21 +73,21 @@ class LinkedList:
             current = current.next
         print(None)
     
-    
+
 # method to return the largest number 
-def find_largest(self):
-    # condition to handle empty linked list
-    if not self.head:
-        return None
-    current = self.head
+    def find_largest(self):
+        # condition to handle empty linked list
+        if not self.head:
+            return None
+        current = self.head
 
-    # initialize the value of head as largest
-    largest = current.data
+        # initialize the value of head as largest
+        largest = current.data
 
-    # iterate until the last node
-    while current:
-        # update largest if necessary
-        if current.data > largest:
-            largest = current.data
-        current = current.next
-    return largest
+        # iterate until the last node
+        while current:
+            # update largest if necessary
+            if current.data > largest:
+                largest = current.data
+            current = current.next
+        return largest
