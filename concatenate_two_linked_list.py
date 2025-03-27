@@ -92,12 +92,11 @@ class LinkedList:
             self.head = list2.head
             return
         
-            current = self.head 
+        current = self.head
+        
+        # traverse the linked list
+        while current.next:
+            current = current.next
 
-            # traverse the linked list
-            while current.next:
-                current = current.next
-            
-            # link the last node of list1 to
-            # the first node of list2 
-            current.next = list2.head
+        # link the last node of list1 to the first node of list2
+        current.next = list2.head
