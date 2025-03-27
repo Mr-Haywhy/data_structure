@@ -1,4 +1,4 @@
-# LINKED LIST
+#......................LINKED LIST.............................#
 # A linked list is a linear data structure that includes a series of connected elements. Each element of a linked list is called a node.
 # A node stores data and the address of the next node.
 # A linked list is a series of connected nodes.
