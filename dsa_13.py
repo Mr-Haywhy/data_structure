@@ -49,8 +49,7 @@ class CircularLinkedList:
         # make the last node point back to the head, making it circular
         node3.next = self.head
 
-linked_list = CircularLinkedList()
-linked_list.create_linked_list()
+
 
 
 #..............Traverse a Circular Linked List...............#
@@ -82,3 +81,30 @@ linked_list.create_linked_list()
 # The is_empty() method will return
     # True - If the linked list is empty.
     # False - If the linked list is not empty.
+
+
+#................Source Code: Traversal of Circular Linked List...............#
+
+        # add an is_empty() method
+    def is_empty(self):
+        return  self.head is None
+
+    def traverse_list(self):
+
+        # add a condition to check if the list is empty
+        if not self.head:
+            print("Empty Linked List")
+            return
+
+        current = self.head
+        while current.next is not self.head:
+            print(f"{current.data} ->", end=" ")
+            current = current.next
+        # print the last node's data as well
+        print(f"{current.data} -> {self.head.data}")
+
+
+
+
+linked_list = CircularLinkedList()
+linked_list.create_linked_list()
