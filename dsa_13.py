@@ -56,3 +56,29 @@ linked_list.create_linked_list()
 #..............Traverse a Circular Linked List...............#
 # RECALL: Traversal is the process of going through each node one by one.
 
+# In a singly linked list, we traverse until a node points to None (there is no next node).
+
+# However, in a circular linked list, we will traverse until a node points to the head node.
+
+#............Thought Process to apply Traversal..............#
+# To traverse a circular linked list,
+# 1. Start at the head.
+        # current = self.head
+# 2. Loop as long as the next node is not the head node.
+        # current = self.head
+        # while current.next is not self.head:
+            ## move to next node
+            # current = current.next
+
+# If current.next is head, we know for sure that it's the last node.
+
+# However, if we try to traverse an empty linked list, the code will not be executed as current is None.
+
+# So, it's important to check if the list is empty before traversing it. We can do this by creating an is_empty() method:
+
+        # def is_empty(self):
+            # return self.head is None
+
+# The is_empty() method will return
+    # True - If the linked list is empty.
+    # False - If the linked list is not empty.
