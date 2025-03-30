@@ -5,6 +5,8 @@
 
 # Here, the last node points to the head node, creating a circular structure.
 
+# Circular linked lists are suitable for implementing circular data structures or algorithms like circular queues, circular buffers, and circular lists. They can efficiently handle situations where elements need to wrap around or loop back to the beginning.
+
 #...............Why Circular Linked List?..................#
 # Imagine you are playing songs from a playlist. The songs in the playlist are organized like a chain using a linked list.
 
