@@ -1,5 +1,9 @@
 #..............Operations in circular linked lists..............#
-
+# 
+# Compared to singly linked lists, where insertions and deletions are relatively straightforward, circular linked lists require additional logic and checks to ensure the circular connections are preserved.
+# 
+# 
+# 
 class Node:
     def __init__(self, data):
         self.data = data
