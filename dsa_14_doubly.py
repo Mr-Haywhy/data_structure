@@ -37,6 +37,8 @@
 #..............Thought Process: Create a Doubly Linked list....................#
 # To implement a doubly linked list, we'll modify our single linked list code by adding a reference to the previous node in each node in our Node class.'
 # 
+# NOTE:To maintain the doubly linked structure, a node in a list requires references to both the next and previous nodes.
+# 
 class Node:
     def __init__(self, data):
         # initialize a node with
@@ -54,3 +56,11 @@ class DoublyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+# 
+#..................Traverse Doubly Linked List....................#
+# Traversing a doubly linked list is the same as traversing a singly linked list. You move node by node until you reach None.
+# The key distinction here from a regular linked list is that a doubly linked list can also be traversed backward. This is known as reverse traversal.
+# 
+#...............Reverse Traverse a Doubly Linked List..............#
+# In reverse traversal, we start from the tail and traverse backward using prev until we reach None.
+# 
