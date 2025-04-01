@@ -56,6 +56,30 @@ class DoublyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+
+            # create doubly linked list
+    def create_linked_list(self):
+        # add first node
+        node1 = Node(80)
+        # both head and tail is the first node
+        self.head = node1
+        self.tail = node1
+
+        # add second node
+        node2 = Node(9)
+        # update the pointers
+        node1.next = node2
+        node2.prev = node1
+        # node2 becomes the new tail
+        self.tail = node2
+
+        # add third node
+        node3 = Node(14)
+        # update the pointers
+        node2.next = node3
+        node3.prev = node2
+        # node3 becomes the new tail
+        self.tail = node3
 # 
 #..................Traverse Doubly Linked List....................#
 # Traversing a doubly linked list is the same as traversing a singly linked list. You move node by node until you reach None.
@@ -82,3 +106,26 @@ class DoublyLinkedList:
     # 2. Loop until the node is 'None' by utilizing the 'prev' pointer.
             # While current is not None:
                 # current = current.prev
+
+#..............Source Code: Traversal.................#
+    #  traverse the linked list
+    def traverse(self):
+        # start at head
+        current = self.head
+        print("None", end = " <-> ")
+        # loop until the node is None
+        while current is not None:
+            print(f"{current.data} <-> ", end="") 
+            current = current.next
+        print("None")
+    # reverse traverse the linked list
+    def reverse_traverse(self):
+        # start at tail
+        current = self.tail
+        print("None", end = " <-> ")
+        # loop until node is None
+        while current is not None:
+            print(f"{current.data} <-> ", end="") 
+            current = current.prev
+        print("None")
+
