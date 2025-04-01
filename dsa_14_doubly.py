@@ -64,3 +64,21 @@ class DoublyLinkedList:
 #...............Reverse Traverse a Doubly Linked List..............#
 # In reverse traversal, we start from the tail and traverse backward using prev until we reach None.
 # 
+#.............Thought Process: Traversal of a Doubly Linked List...............#
+# Let's implement methods to traverse a doubly linked list in both forward and reverse directions.
+# 
+#..........Forward Traversal..........#
+# For forward traversal of a doubly linked list, we will:
+    # 1. Start from the 'head' node.
+            # current = self.head
+    # 2. Loop until the node is 'None' by utilizing the 'next' pointer.
+            # while current is not None:
+                # current = current.next
+
+#............Reverse Traversal.............#
+# For reverse traversal of a doubly linked list, we will:
+    # 1. Start from the 'tail' node.
+            # current = self.tail
+    # 2. Loop until the node is 'None' by utilizing the 'prev' pointer.
+            # While current is not None:
+                # current = current.prev
