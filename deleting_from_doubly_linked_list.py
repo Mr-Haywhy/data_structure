@@ -95,7 +95,7 @@
 # 
 
 
-#.....................Source Code: Deleting node........................#
+#.....................Source Code: Deleting from a doubly ended linked list........................#
 class Node:
     def __init__(self, data):
         self.prev = None
