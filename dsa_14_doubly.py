@@ -16,3 +16,41 @@
 # Doubly linked lists find applications beyond text editors, including task scheduling, cache management, and doubly ended queue implementations.
 # 
 #..............Create a doubly linked list.................#
+# As we know, in a regular linked list:
+    # Each node contains a reference to the next node.
+    # The last node points to None.
+# To convert this regular linked list to a doubly linked list, we will:
+
+# 1. Add reference to the previous node to each node.
+    # previous
+    # Data
+    # Next
+# 
+# 2. Add a tail pointer.
+# A tail pointer is similar to the head pointer; it just points to the last node in the linked list.
+# 
+# After we have added the tail pointer, we will:
+    # Make the next pointer of tail point to None.
+    # Make the previous pointer of head point to None.
+
+# 
+#..............Thought Process: Create a Doubly Linked list....................#
+# To implement a doubly linked list, we'll modify our single linked list code by adding a reference to the previous node in each node in our Node class.'
+# 
+class Node:
+    def __init__(self, data):
+        # initialize a node with
+        # data and next pointer
+        self.data = data
+        self.next = None
+
+        # add a prev pointer to
+        # convert to doubly linked list
+        self.prev = None
+# 
+# Then, we'll add a tail pointer in our class to handle the list.
+# 
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
