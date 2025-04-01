@@ -54,7 +54,7 @@
 
 # ...............Insert at the beginning................#
 # Imagine we have the following list.
-#               80<=>9<=>14
+#               80<=>9<=>14<=>20
 # To insert a node 10 at the beginning of the linked list, we will:
 # 1. Update references.
     # Make the next pointer of the new node point to the head node.
@@ -76,3 +76,39 @@
 
         #     # update head
         #     self.head = new_node
+# 
+#..............Insert at a given position................#
+# Let's see how to insert a node at a given position in a doubly linked list.
+# Suppose we have the following linked list.
+#           10<=>80<=>9<=>14<=>20
+# 
+# To insert a new node (11) at the fourth position of the linked list, we will:
+# 1. Traverse from 'head' node to node at position - 1.
+# 2. Update Links.
+# Now, we'll update the links as follows:
+    # Make the next pointer of the third node point to the new node.
+    # Make the prev pointer of the fourth node point to the new node.
+    # Make the prev pointer of the new node point to the third node.
+    # Make the next pointer of the new node point to the fourth node.
+# 
+#...............Code: Insert at a given position..................#
+# So, our implementation of insertion at a given position will look like this.
+
+        # # insert at position
+        # def insert_at_position(self, position, data):
+        #     # create new node
+        #     new_node = Node(data)
+        #     # bring a pointer to desired position 
+        #     current = self.head
+        #     for i in range(position - 1):
+        #         current = current.next
+                
+        #     # get a pointer to the next node
+        #     next_node = current.next
+
+        #     # update pointers
+        #     current.next = new_node
+        #     next_node.prev = new_node
+
+        #     new_node.prev = current
+        #     new_node.next = next_node
