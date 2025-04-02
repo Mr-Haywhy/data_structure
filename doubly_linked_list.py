@@ -211,3 +211,5 @@ linked_list.delete_node(1)
 
 print("Linked List After Deletions:")
 linked_list.traverse()
+
+# This is a disadvantage of using a doubly linked list because it requires additional memory to store the reference to the previous node.
