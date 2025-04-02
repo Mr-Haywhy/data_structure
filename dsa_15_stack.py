@@ -20,3 +20,41 @@
 # We can use the list's pop() method to remove the last element from the list.
         ## remove the last element
         # item = stack.pop()
+
+# ................create stack.....................#
+# create class to represent stack
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, item):
+        self.stack.append(item)
+
+    def pop(self):
+        return self.stack.pop()
+
+    def print_stack(self, message):
+        print(f"{message}: {self.stack}")
+
+# initialize the stack
+stack1 = Stack()
+
+# add items to stack
+stack1.push(5)
+stack1.push(10)
+stack1.push(100)
+
+# print stack
+stack1.print_stack("Stack after pushing three items")
+
+# remove an item
+removed_item = stack1.pop()
+
+stack1.print_stack("Stack after popping")
+print(f"Removed item: {removed_item}")
+
+# remove an item again
+removed_item = stack1.pop()
+
+stack1.print_stack("Stack after popping again")
+print(f"Removed item: {removed_item}")
