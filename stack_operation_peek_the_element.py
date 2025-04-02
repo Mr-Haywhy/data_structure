@@ -14,7 +14,7 @@
         # print(stack[-1])   # 30
 # 
 #.....................Source Code: Complete stack implementation..........................#
-
+# create class to represent stack
 class Stack:
     def __init__(self):
         self.stack = []
