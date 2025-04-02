@@ -58,3 +58,11 @@ removed_item = stack1.pop()
 
 stack1.print_stack("Stack after popping again")
 print(f"Removed item: {removed_item}")
+
+
+#..................Time Complexity.........................#
+# In a stack, we only need to deal with the top element, regardless of the operation we perform or the size of the stack.
+# Therefore, all stack operations take constant time.
+        # Time Complexity: O(1)
+
+# Let's explore stack a little more by converting an infix expression to a postfix. But before that, here's an exercise for you.
