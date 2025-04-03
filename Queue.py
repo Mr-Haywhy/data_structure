@@ -45,10 +45,17 @@ class Queue:
 # initializes queue attribute to an empty list
 queue1 = Queue()
 
+# take list of numbers as input
+numbers = list(map(int, input().split()))
+
+for num in numbers:
+    # add each input to the queue
+    queue1.enqueue(num)
+
 # add elements to the queue
-queue1.enqueue(5)
-queue1.enqueue(10)
-queue1.enqueue(100)
+    # queue1.enqueue(5)
+    # queue1.enqueue(10)
+    # queue1.enqueue(100)
 
 # print queue
 queue1.print_queue("Queue after adding 3 elements")
