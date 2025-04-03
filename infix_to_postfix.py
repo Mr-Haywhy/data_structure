@@ -72,7 +72,7 @@ class Stack:
 
 def infix_to_postfix(infix): 
     
-    operators = {'+':1, '*':2} 
+    operators = {'+':1, '-':2, '%':3, '/':4, '*':5, '()':6} 
 
     stack = Stack()
     postfix = '' 
