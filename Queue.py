@@ -26,3 +26,37 @@
 # We can use pop(0) to remove the first element of the queue.
 #     # remove the first element
 #     item = queue.pop(0)
+
+#......................Source Code...........................#
+# create class to represent queue
+class Queue:
+    def __init__(self):
+        self.queue = []
+
+    def enqueue(self, item):
+        self.queue.append(item)
+
+    def dequeue(self):
+        return self.queue.pop(0)
+
+    def print_queue(self, message):
+        print(f"{message}: {self.queue}")
+
+# initializes queue attribute to an empty list
+queue1 = Queue()
+
+# add elements to the queue
+queue1.enqueue(5)
+queue1.enqueue(10)
+queue1.enqueue(100)
+
+# print queue
+queue1.print_queue("Queue after adding 3 elements")
+
+# remove item from last
+print(f"Dequeue an Element {queue1.dequeue()}")
+queue1.print_queue("After removing an item")
+
+# remove item again
+print(f"Dequeue Another Element {queue1.dequeue()}")
+queue1.print_queue("After removing another item")
