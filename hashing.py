@@ -158,3 +158,18 @@ for key in keys:
     hash1.put(key)
 
 hash1.display()
+
+
+#...................More on Modular Hashing.................#
+# It's important to note that modular hashing doesn't necessarily have to take the exact form of x % n.
+
+# Modular hashing can include operations such as addition, subtraction, and division before applying the modulus operation.
+
+# For example, assuming a hash table of size 7 to find the hash value of string "GAP", we cannot directly perform modulo operations as "GAP" mod 7 doesn't make any sense.
+
+# In such cases, we can perform some additional operations before the modular operation. One such option is to take the ASCII value of each character and sum them beforehand.
+
+        # H("GAP") = [ord("G") + ord("A") + ord("P)] mod 7
+        # = [71 + 65 + 80] mod 7
+        # = 216 mod 7
+        # = 6
