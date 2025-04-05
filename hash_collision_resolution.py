@@ -69,3 +69,98 @@ for i in data:
 # display the linked list
 
 print(li.traverse())
+
+
+#................Chaining Implementation..............#
+# Previously, our method of inserting items into the hash table looked like this:
+
+    # # method to insert an item
+    # def put(self, key):
+
+    #     hash_value = self.hash_function(key)
+    #     self.table[hash_value] = key
+# 
+
+# We need to modify this method so each slot is a linked list.
+    
+    ## insert data to hash table
+    # def put(self, key):
+
+        ## insert into table
+    #     hash_value = self.hash_function(key)
+
+        ## if the slot is empty	
+    #     if not self.table[hash_value]:
+
+            ## create a linked list at the slot
+    #         self.table[hash_value] = LinkedList()
+
+        ## append item to the linked list
+    #     self.table[hash_value].append(key)
+
+
+# Here is how it works:
+    # At a specific slot in the hash table, we start by creating a linked list if it doesn't already exist.
+    # Next, we append the key to this linked list, ensuring that all keys are mapped to the same slot.
+
+# We will also modify the display() method so that items in the linked list are traversed and displayed.
+
+# The LinkedList class already includes the traverse() method for this purpose. This method traverses a linked list and returns its items in the form of a string: item1->item2->None.
+
+      ## display hash table
+    # def display(self):
+    #     for hash_value, key in enumerate(self.table):
+
+              ## if slot is a linked list
+    #         if key: 
+    #             print(f"{hash_value}: {key.traverse()}")
+
+              ## if slot is empty
+    #         else:
+    #             print(f"{hash_value}: {key}")
+
+
+
+
+#.................Source Code: Chaining......................#
+class HashData:
+
+    # initialize a list of 10 items
+    def __init__(self):
+        self.table = [None] * 10
+
+    # compute hash
+    def hash_function(self, key):
+        return key % 10
+
+    # insert data to hash table
+    def put(self, key):
+        # insert into table
+        hash_value = self.hash_function(key)
+         # if the slot is empty	
+        if not self.table[hash_value]:
+            # create a linked list at the slot
+            self.table[hash_value] = LinkedList()
+        # append item to the linked list
+        self.table[hash_value].append(key)
+
+    # display hash table
+    def display(self):
+        for hash_value, key in enumerate(self.table):
+            # if slot is a linked list
+            if key: 
+                print(f"{hash_value}: {key.traverse()}")
+            # if slot is empty
+            else:
+                print(f"{hash_value}: {key}")
+
+hash1 = HashData()
+
+# keys
+keys = [12, 17, 15, 4, 27, 14, 37]
+
+# apply hash function to each key
+for key in keys:
+    hash1.put(key)
+
+hash1.display()
