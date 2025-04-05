@@ -70,3 +70,46 @@
 # In this case, we create a new hash table.
 
 # NOTE: Rehashing alone will not solve collisions. However, it will create a new hash table with a new size. We will learn about collision resolution after we learn to resize our hash table.
+
+# ....................Thought Process: Rehashing...............#
+# Suppose we have this hash function H(x) = X mod 10.
+# If the load factor threshold is reached during hashing, we will rehash the values in a new hash table using H(x) = X mod 20 as the hash function.
+
+# 1. Create a list to store hash values.
+
+# Since this hash function gives hash values between 0 and 9, we will initialize a list of 10 elements.
+
+# # all elements are initialized to None
+# size = 10
+# table = [None] * size
+# 2. Define the load factor threshold.
+
+# lf_threshold = 0.7
+# 3. Find the hash of a key.
+
+# hash_value = key % size
+# 4. Insert data into the hash table.
+
+   
+#  # insert into table
+# hash_value = self.hash_function(key)
+# self.table[hash_value] = key
+# 5. Compute threshold during each insertion
+
+# # current lf = occupied slot/total slots
+# current_lf = sum(1 for slot in self.table if slot) / (self.size)
+# 6. Rehash if the load factor exceeds the threshold.
+
+# if current_lf > lf_threshold:
+#     # create a new hash table
+#     self.size = 2 * self.size
+#         new_table = [None] * self.size 
+
+#     # insert data from old table into new hashtable
+#     for data in self.table:
+#         if(data):
+#             hash_value = self.hash_function(data)
+#             new_table[hash_value] = data
+
+#     # update table
+#     self.table = new_table
