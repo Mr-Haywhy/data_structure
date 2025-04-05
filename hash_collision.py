@@ -113,3 +113,66 @@
 
 #     # update table
 #     self.table = new_table
+
+
+class HashData:
+
+    # initialize a list of 10 items
+    def __init__(self):
+        self.size = 10
+        self.table = [None] * self.size
+        self.lf_threshold = 0.7
+
+    # compute hash
+    def hash_function(self, key):
+        return key % self.size
+
+    # insert data to hash table
+    def put(self, key):
+        # insert into table
+        hash_value = self.hash_function(key)
+        self.table[hash_value] = key
+        
+        # computer threshold during each insertion
+        # current lf = occupied slot/total slots
+        current_lf = sum(1 for slot in self.table if slot) / (self.size)
+        # check if load factor exceeds after each insertion
+        if current_lf >= self.lf_threshold:
+            self.rehash()
+            
+    def rehash(self):
+        # create a new hash table
+        self.size = 2 * self.size
+        new_table = [None] * self.size 
+        # hash existing data into new table
+        for data in self.table:
+            if(data):
+                hash_value = self.hash_function(data)
+                new_table[hash_value] = data
+        # update table
+        self.table = new_table
+
+    # display hash table
+    def display(self):
+        for hash_value, key in enumerate(self.table):
+            print(f"{hash_value}: {key}")    
+
+hash1 = HashData()
+
+# keys
+keys = [1, 300, 209, 17, 12, 24, 36]
+
+# apply hash function to each key
+for key in keys:
+    hash1.put(key)
+
+hash1.display()
+
+#.....................Limitation of Rehashing............#
+# Effective rehashing reduces the chances of collisions by increasing the table size.
+# While this addresses collision-related concerns, it's important to note that it doesn't actually resolve collisions.
+# For instance, consider the dataset [5, 15, 25] with table size 10.
+# In this scenario, each key, 5, 15, and 25, maps to the hash value 5.
+# Here, a collision occurs even when the load factor is as low as 0.1.
+# The takeaway here is that rehashing alone may not prevent collisions.
+# In the next lesson, we will learn about more robust collision resolution strategies that allow us to handle collisions better.
