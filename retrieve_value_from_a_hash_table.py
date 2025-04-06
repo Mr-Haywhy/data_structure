@@ -1,4 +1,4 @@
-# ....................etrieve Value from a Hash Table.....................
+# ....................Retrieve Value from a Hash Table.....................
 # Here's the hash table output from the last example.
 
     # 0: None
@@ -13,9 +13,11 @@
     # 9: None
 
 # Suppose we need to retrieve item 27 from this hash table. Here's how we can achieve this:
+
     #* Apply the hash function to find the hash value. For the key 27, the hash is 7.
     #* Then, look into the hash table with this hash. This will give us a linked list (or None if the item doesn't exist).
     #* Then, we will traverse the linked list until the item is found or the last element of the linked list is reached.
+
 # Let's add a method to implement this in our code and see how it works next.
 
 
