@@ -102,8 +102,10 @@ class HashData:
             current = key.head
             # when value is found, stop traversal
             while current:
+                # if current data is equal to item
                 if current.data == item:
                     return {"hash_value": hash_value, "key": item}
+                # stop traversal
                 current = current.next
         return {"hash_value": hash_value, "key": None}
 
