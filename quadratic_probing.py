@@ -86,7 +86,7 @@ print(hash1.retrieve(13))
 
 
 #.................Limitations of Quadratic ..................#
-# While quadratic probing does address primary clustering better than linear probing, it still faces challenges.
-# The deletion operation still remains complex.
-# Additionally, quadratic probing introduces the possibility of secondary clustering, where items still cluster together despite using the quadratic increment.
-# In the next topic, we will explore double hashing as a collision resolution technique, which aims to further improve upon the limitations of linear and quadratic probing.
+# While quadratic probing does address _primary_clustering_ better than linear probing, it still faces challenges.
+# The deletion operation still remains_complex.
+# Additionally, quadratic probing introduces the_possibility_of_secondary_clustering_, where items still cluster together despite using the quadratic increment.
+# In the next topic, we will explore _double_hashing_ as a_collision_resolution_technique_, which aims to further improve upon the limitations of linear and quadratic probing.
