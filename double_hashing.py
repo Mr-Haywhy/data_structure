@@ -92,3 +92,74 @@
     # If the value is found at its expected index, return it.
     # If not, use the secondary hash function to calculate the step size and move to the next slot.
     # Repeat until you find an empty slot or the desired value.
+
+#.........Thought Process: Double Hashing
+# Double Hashing is implemented in the same way as probing techniques.
+# Here, we just have a different hash function.
+# Our double hash function takes the form of:
+
+#................Source code: Double Hashing.............#
+class HashData:
+
+    # initialize a list of 10 items
+    def __init__(self):
+        self.table = [None] * 10
+
+    # compute hash
+    def hash_function(self, key, i = 0):
+        return (self.primary_hash_function(key) + i * self.secondary_hash_function(key)) % 10
+        
+    # primary hash function
+    def primary_hash_function(self, key):
+        return (key) % 10
+    
+    # secondary hash function
+    def secondary_hash_function(self, key):
+        return 1 + key % 9
+
+    # insert data to hash table
+    def put(self, key):
+        i = 0
+        hash_value = self.hash_function(key)
+        while self.table[hash_value]:
+            # handle collision by probing using secondary hash functio
+            i += 1
+            hash_value = self.hash_function(key, i) # use double hash
+        # insert into the empty slot
+        self.table[hash_value] = key   
+    
+    # display hash table
+    def display(self):
+        for hash_value, key in enumerate(self.table):
+            print(f"{hash_value}: {key}")    
+    
+    # retrieve data from hash table
+    def retrieve(self, key):
+        hash_value = self.hash_function(key)
+        i = 0
+        while self.table[hash_value]:
+             # if the required key is found, return its hash value and key
+            if self.table[hash_value] == key:
+                return {"hash_value": hash_value, "key": key}
+            # move to the next slot using secondary hash function
+            i += 1
+            hash_value = self.hash_function(key, i) # use double hash
+        # if the key is not found in the table, return None
+        return {"hash_value": hash_value, "key": None}
+
+# keys
+keys = [12, 17, 15, 4, 27, 14, 37]
+
+hash1 = HashData()
+
+# apply hash function to each key
+for key in keys:
+    hash1.put(key)
+    
+hash1.display()
+
+print()
+print("Retrieving Values: ")
+
+print(hash1.retrieve(27))
+print(hash1.retrieve(13))
