@@ -82,3 +82,13 @@
         #   9   |   9
         #   10   |
         #   11   |
+
+#............Working of Double Hashing..............#
+#.....Retrieve values from the hash table
+
+# Retrieving a value using Double Hashing is the same as probing; here, the step size is determined by the second function. 
+# Follow these steps:
+    # Hash the value using the primary hash function.
+    # If the value is found at its expected index, return it.
+    # If not, use the secondary hash function to calculate the step size and move to the next slot.
+    # Repeat until you find an empty slot or the desired value.
