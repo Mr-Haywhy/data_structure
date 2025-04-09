@@ -47,30 +47,49 @@
 
 
 #................Folding Hash Function
-The folding hash function involves dividing a given number into segments, summing these segments, and using the resulting sum as the hash value.
+# The folding hash function involves dividing a given number into segments, summing these segments, and using the resulting sum as the hash value.
 
-This technique spreads data more uniformly across hash table slots, reducing clustering and improving data storage efficiency.
+# This technique spreads data more uniformly across hash table slots, reducing clustering and improving data storage efficiency.
 
-Let's apply the folding hash function to our dataset (12, 14, 2, 6, 9, 26) using a hash table size of 12:
+# Let's apply the folding hash function to our dataset (12, 14, 2, 6, 9, 26) using a hash table size of 12:
 
-Hashing the Numbers:
-12: Splitting into segments: 1 and 2. Adding segments: 1 + 2 = 3.
-14: Splitting into segments: 1 and 4. Adding segments: 1 + 4 = 5.
-2: Splitting into segments: 0 and 2. Adding segments: 0 + 2 = 2.
-6: Splitting into segments: 0 and 6. Adding segments: 0 + 6 = 6.
-9: Splitting into segments: 0 and 9. Adding segments: 0 + 9 = 9.
-26: Splitting into segments: 2 and 6. Adding segments: 2 + 6 = 8.
+# Hashing the Numbers:
+# 12: Splitting into segments: 1 and 2. Adding segments: 1 + 2 = 3.
+# 14: Splitting into segments: 1 and 4. Adding segments: 1 + 4 = 5.
+# 2: Splitting into segments: 0 and 2. Adding segments: 0 + 2 = 2.
+# 6: Splitting into segments: 0 and 6. Adding segments: 0 + 6 = 6.
+# 9: Splitting into segments: 0 and 9. Adding segments: 0 + 9 = 9.
+# 26: Splitting into segments: 2 and 6. Adding segments: 2 + 6 = 8.
 
-        #_keys_ | _Hash_value_
-        #   0   |   
-        #   1   |
-        #   2   |   2
-        #   3   |   12
-        #   4   |   
-        #   5   |   14
-        #   6   |   6
-        #   7   |   
-        #   8   |   26
-        #   9   |   9
-        #   10   |
-        #   11   |
+#         #_keys_ | _Hash_value_
+#         #   0   |   
+#         #   1   |
+#         #   2   |   2
+#         #   3   |   12
+#         #   4   |   
+#         #   5   |   14
+#         #   6   |   6
+#         #   7   |   
+#         #   8   |   26
+#         #   9   |   9
+#         #   10   |
+#         #   11   |
+
+
+# This is how the folding hash function works. Like the previous hash functions, all collision resolution and other operations are the same as those used in the modulus hash function.
+
+# As you can see, the folding hash function distributes the keys more evenly than the previous hash function.
+
+# Now, let's explore another example of using the folding hash method.
+
+# Consider the following data 123347:
+
+# Let's divide the number into sets of two digits.
+#         123347 -> 12 + 33 + 47 = 92 
+ 
+# Since our table of size 12 doesn't have a key 92, we can fold it further.
+#         9 + 2 = 11
+
+# Alternatively, we can also take modulus from here.
+#         92 % 14 = 8
+# The choice is entirely yours.
