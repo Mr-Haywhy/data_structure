@@ -43,3 +43,34 @@
         #   9   |   14
         #   10   |
         #   11   |
+
+
+
+#................Folding Hash Function
+The folding hash function involves dividing a given number into segments, summing these segments, and using the resulting sum as the hash value.
+
+This technique spreads data more uniformly across hash table slots, reducing clustering and improving data storage efficiency.
+
+Let's apply the folding hash function to our dataset (12, 14, 2, 6, 9, 26) using a hash table size of 12:
+
+Hashing the Numbers:
+12: Splitting into segments: 1 and 2. Adding segments: 1 + 2 = 3.
+14: Splitting into segments: 1 and 4. Adding segments: 1 + 4 = 5.
+2: Splitting into segments: 0 and 2. Adding segments: 0 + 2 = 2.
+6: Splitting into segments: 0 and 6. Adding segments: 0 + 6 = 6.
+9: Splitting into segments: 0 and 9. Adding segments: 0 + 9 = 9.
+26: Splitting into segments: 2 and 6. Adding segments: 2 + 6 = 8.
+
+        #_keys_ | _Hash_value_
+        #   0   |   
+        #   1   |
+        #   2   |   2
+        #   3   |   12
+        #   4   |   
+        #   5   |   14
+        #   6   |   6
+        #   7   |   
+        #   8   |   26
+        #   9   |   9
+        #   10   |
+        #   11   |
