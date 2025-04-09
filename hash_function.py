@@ -93,3 +93,21 @@
 # Alternatively, we can also take modulus from here.
 #         92 % 14 = 8
 # The choice is entirely yours.
+
+
+#.............Custom Hash Functions
+# All the techniques and functions mentioned above are commonly used hash functions, but you're not limited to them.
+
+# Every problem is unique and might require a different hash function tailored to its characteristics.
+
+# Let's revisit the problem we started with:
+
+# 1 | Apple
+# 2 |
+# 3 | Cactus
+# 4 |
+# 5 |
+# 6 |
+# 7 | Grasshopper
+# 8 |
+# 9 | Iron
