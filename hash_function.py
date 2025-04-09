@@ -111,3 +111,15 @@
 # 7 | Grasshopper
 # 8 |
 # 9 | Iron
+
+# In this case, the hash function used is:
+
+#         H(x) = ASCII(x[0]) - 64
+
+# Clearly, this custom hash function doesn't fit into any of the techniques discussed earlier.
+
+# This example underscores the fact that you must always select the appropriate hash function based on the specific requirements of your problem.
+
+# Your hash function might need to take into account the nature of the data, the expected distribution, and any patterns unique to your use case.
+
+# So, feel free to design and experiment with your own hash functions to achieve the best results for your particular situation.
