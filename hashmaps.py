@@ -8,7 +8,7 @@
 
 # To understand the benefits of hashmaps, let's explore why they're useful.
 
-#............Why Use a Hashmap?
+#............Why Use a Hashmap?.......................
 # 1. Avoiding Collisions
 # The primary advantage of hashmaps over traditional hash tables is that they can effectively avoid collisions, which reduces the likelihood of data loss or corruption.
 
@@ -130,3 +130,40 @@
     # 2 Traverse the linked list at the resulting index until you find the key.
     # 3 Return the value associated with the key.
 # Next, we'll demonstrate this operation with an example.
+
+Let's say we have to fetch a value with a key 18.
+
+Step 1: Hash the key to find the hash table index.
+    We'll first get the hash of the key 18. Using the same hash function, we get the hash value of 5 (18 % 13).
+
+Step 2: Traverse the linked list at the index until the key is found.
+    We start traversing the list from the head at index 5 of the hash table. We then compare the keys until the key we are looking for is found.
+The head node doesn't have the key 18, so the match is not found.
+We therefore move to the next node, which is the node with the key 18. This is the required node, and the key is thus found.
+Step 3: Return the associated value.
+    Having found the required key (18), we can now return the value Paul.
+
+Next, we'll learn how to remove data from the hashmap.
+
+......................Working: Removing Data From a Hashmap
+To remove a key-value pair from the hashmap,
+
+We hash the key using the same hash function to get the hash table index.
+Traverse the linked list at the resulting index.
+Remove the node containing the key-value pair if it is found.
+Let's say we have to remove a value with a key 18. Here's how we can implement the steps above:
+
+Step 1: Hash the key.
+    We'll first get the hash of the key 18. Using the same hash function, we get the hash value of 5 (18 % 13).
+
+Next, we'll implement steps 2 and 3.
+
+Step 2: Traverse the linked list at the resulting index.
+    We start traversing the list from the head at index 5 of the hash table. We then compare the keys until the key we are looking for is found.
+Here, the head node doesn't have the key 18, so the match is not found.
+
+We therefore move to the next node, which is the node with the key 18 (the one we're looking for).
+
+Step 3: Delete the key.
+
+Now, we delete the node from the associated list.
