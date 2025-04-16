@@ -166,5 +166,5 @@ else:
 # pattern = input()
 # occurrences = brute_force(text, pattern)
 # for occurrence in occurrences:
-#     end_index = occurrence + len(pattern)
+#     end_index = occurrence + len(pattern) - 1
 #     print(f"Matching pattern: index {occurrence} to {end_index}.")
