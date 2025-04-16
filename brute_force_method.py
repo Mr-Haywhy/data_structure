@@ -168,3 +168,19 @@ else:
 # for occurrence in occurrences:
 #     end_index = occurrence + len(pattern) - 1
 #     print(f"Matching pattern: index {occurrence} to {end_index}.")
+
+# ..............Limitation of the Brute Force Method..........
+# The brute force algorithm, as its name suggests, isn't very efficient. It ends up doing a lot of extra comparisons, especially when dealing with repeated letters. Look at this example:
+
+# [AAAAB]
+# [AAB]
+
+# [AAAAB]
+#  [AAB]
+
+# [AAAAB]
+#   [AAB]
+
+# When it's trying to match "AAAAB" with "AAB", you can see it's making more comparisons than needed.
+
+# Luckily, there are better algorithms that avoid this problem. We'll learn about them next.
