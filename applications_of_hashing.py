@@ -35,3 +35,9 @@ print(person)
 # check if a key is in the dictionary
 if "city" in person:
     print("City is:", person["city"])
+
+
+
+# ................Hashing Passwords
+# When users create accounts on websites, it's important that their passwords are stored securely. This is where hashing algorithms come into play.
+# Instead of storing the plain-text password, systems store the hash of the password to make it more secure. Some popular algorithms like MD5, SHA-1, SHA-2 use hash to secure your passwords.
