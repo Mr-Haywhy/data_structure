@@ -160,3 +160,11 @@ if occurrences:
     print(f"The pattern found at indices: {occurrences}.")
 else:
     print("The pattern is not present in the text.")
+
+
+# text = input()
+# pattern = input()
+# occurrences = brute_force(text, pattern)
+# for occurrence in occurrences:
+#     end_index = occurrence + len(pattern)
+#     print(f"Matching pattern: index {occurrence} to {end_index}.")
