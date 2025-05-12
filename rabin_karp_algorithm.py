@@ -153,3 +153,36 @@ print(f"The hash value of '{string_to_hash}' is: {hash_result}")
 # next character
 # Here, the hash value of the pattern "CDD" is 41, and that of "EFG" is 25.
 # In this way, we search for the pattern from the given string.
+
+
+#...............Text Comparison in Rabin Karp..................
+# Even though hash values may match, we perform direct character comparison to double-check if the pattern and the substring are similar.
+
+# This is essential because more than one pattern can have the same hash value.
+
+# Let's consider the patterns "ABC" and "CBA" to illustrate this concept:
+
+# We have the ASCII values:
+# A=65
+# B=66
+# C=67
+
+# For pattern "ABC", hash calculation is:
+
+#     = (65 * 256^2) + (66 * 256^1) + (67 * 256^0) mod 101
+#     = (65 * 65536) + (66 * 256) + 67 mod 101
+#     = 4267009 mod 101
+#     = 52
+
+# Similarly for the pattern "CBA", hash calculation is:
+    
+#     = (67 * 256^2) + (66 * 256^1) + (65 * 256^0) % 101
+#     = (67 * 65536) + (66 * 256) + 65 % 101
+#     = 4390912 % 101
+#     = 52
+
+# Although the hash values match, a character-by-character comparison reveals differences between the patterns.
+
+# If the hash values match but the pattern differs, this is known as spurious hits(false positives).
+
+# Therefore, we have to perform text comparison even after the hash values have matched.
