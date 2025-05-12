@@ -186,3 +186,134 @@ print(f"The hash value of '{string_to_hash}' is: {hash_result}")
 # If the hash values match but the pattern differs, this is known as spurious hits(false positives).
 
 # Therefore, we have to perform text comparison even after the hash values have matched.
+
+
+#.............Thought Process: Rabin-Karp Algorithm.................
+# Now, let's see how we can implement the Rabin-Karp algorithm in Python.
+
+# 1. Get the text and the pattern.
+    # def rabin_karp(text, pattern, base = 256, prime = 101):
+
+# Here, we have defined the rabin_karp() function, which takes in two arguments:
+
+#     *text - the original string
+#     *pattern - the pattern to be searched
+
+# Here, we assign a base for the possible characters in the input set and a random prime_number for the modulo operations.
+
+# 2. Initialize the values.
+    # pattern_length = len(pattern)
+    # text_length = len(text)
+
+# Then, we create variables pattern_length and text_length to store the lengths of the pattern and the text, respectively.
+
+# Similarly, we initialize a list to store occurrences of the pattern in text.
+    # occurrences = []
+
+# Also, we have to pre-compute the highest power of base. This is needed to update the hash for the next substring.
+    # highest_base_pow = pow(base, pattern_length - 1) % prime
+
+# 3. Calculate the hash value.
+
+# We calculate the hash value of the pattern and the initial segment of the text.
+
+    # pattern_hash = compute_hash(pattern, base, prime_number)
+    # substring_hash = compute_hash(text[:m], base, prime_number)
+
+# 4. Compare the pattern and check for a match.
+
+# After calculating the hash values, we compare those hash values and perform character-wise comparisons to confirm the matches.
+# If the text patterns match, we add the index of the text to the occurrences list and then move to the next set of characters since our text can have more than one occurrence of the pattern.
+
+    # for i in range(text_length - pattern_length + 1):
+    #     if pattern_hash == substring_hash:
+    #         # double check to confirm match
+    #         if all(text[i + j] == pattern[j] for j in range(pattern_length)):
+    #             occurrences.append(i)
+
+# If the text pattern does not match, we simply move on to the next set of characters.
+
+# 5. Update the hash value.
+
+# We then update the hash value for each segment of the text through rolling hash.
+
+# Here, we've used the hashing algorithm, as discussed previously.
+    # Hash value=∑(character_value×base ^length−1)modprime_number
+
+# So our rolling hash simply removes the old character's hash value and adds the new character's hash value.
+
+    # if i < text_length - pattern_length:                
+        ## update the rolling hash for the next substring
+        ## remove first character's hash and add next character's hash-based
+    #     substring_hash = (substring_hash - ord(text[i]) * highest_base_pow) * base
+    #     substring_hash = (substring_hash + ord(text[i + pattern_length])) % prime
+# Next, we will write a working program to implement the Rabin-Karp algorithm.
+
+
+def compute_hash(string, base = 256, prime = 101):
+    
+    hash_value = 0
+
+    for index, char in enumerate(string):
+        
+        ascii_value = ord(char)
+        exponent = len(string) - index - 1
+        term = (ascii_value * pow(base, exponent)) % prime
+        
+        hash_value = (hash_value + term) % prime
+
+    return hash_value
+
+def rabin_karp(text, pattern, base = 256, prime = 101):
+
+    pattern_length = len(pattern)
+    text_length = len(text)
+
+    # hash of the pattern text (substring)
+    pattern_hash = compute_hash(pattern)
+    
+    # hash of a substring that has the same length as the pattern
+    substring_hash = compute_hash(text[: pattern_length])
+    
+    # initialize a list to store occurrences of the pattern in text
+    occurrences = []
+    
+    # pre-compute the highest power of base
+    # this is needed to update the hash for the next substring
+    highest_base_pow = pow(base, pattern_length - 1) % prime
+
+    # loop through all possible substrings of text with pattern length
+    for i in range(text_length - pattern_length + 1):
+        
+        # compare hash of substring and pattern
+        if pattern_hash == substring_hash:
+            
+            # double check to confirm match
+            if all(text[i + j] == pattern[j] for j in range(pattern_length)):
+                occurrences.append(i)
+                
+        # update the hash of the next substring using the previous hash
+        if i < text_length - pattern_length:
+            
+            # update the rolling hash for the next substring
+            # remove first character's hash and add next character's hash-based
+            substring_hash = (substring_hash - ord(text[i]) * highest_base_pow) * base
+            substring_hash = (substring_hash + ord(text[i + pattern_length])) % prime
+            
+    return occurrences
+
+# example usage
+text = "CODEWITHCODER"
+pattern = "CODE"
+occurrences = rabin_karp(text, pattern)
+
+
+print(len(text))
+for occurrence in occurrences:
+    end_index = occurrence + len(pattern) - 1
+    print(f"Matching pattern: index {occurrence} to {end_index}.")
+
+if occurrences:
+    print(f"The pattern found at indices: {occurrences}.")
+else:
+    print("The pattern is not present in the text.")
