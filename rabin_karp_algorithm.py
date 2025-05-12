@@ -317,3 +317,12 @@ if occurrences:
     print(f"The pattern found at indices: {occurrences}.")
 else:
     print("The pattern is not present in the text.")
+
+
+
+#...........Limitation of Rabin-Karp Algorithm................
+# As we've discussed, the Rabin-Karp algorithm can sometimes give false matches because different substrings have the same hash value as the pattern.
+
+# Even though the algorithm tries to fix this by checking the matches character by character, it's not very efficient. This is especially true when there are many substrings with the same hash value as the pattern.
+
+# This extra work of comparing characters adds to the algorithm's computational load, especially when dealing with large texts or patterns. So, while Rabin-Karp can handle these false matches, its reliance on text comparison can slow it down.
