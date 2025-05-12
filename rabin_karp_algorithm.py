@@ -138,3 +138,18 @@ print(f"The hash value of '{string_to_hash}' is: {hash_result}")
 
 # Here, the hash value for the pattern "CDD" is 41 but that of "ABC" is 59.
 # Since the hash values don't match, we then move to the next character.
+# Here, the hash value for the pattern "BCC" is 100, but that of "CDD" is 41.
+# next character
+# Here, the hash value for the pattern "CDD" is 41, but that of "CCD" is 88.
+# next character
+# Here, the hash values for both the pattern "CDD" and the substring "CDD" is 41, resulting in a match.
+# Now, we compare the pattern and the substring just like we did with the brute-force algorithm. As a result, we find that strings do indeed match.
+# However, a string can have multiple matches to the same pattern. Therefore, we continue our search and move on to the next character.
+# Here, the hash value for the pattern "CDD" is 41, but that of the "DDA" is 25.
+# next character
+# Here, the hash value for the pattern "CDD" is 41, and that of the "DAE" is 69.
+# next character
+# Here, the hash values for the pattern "CDD" is 41, and that of "AEF" is 22.
+# next character
+# Here, the hash value of the pattern "CDD" is 41, and that of "EFG" is 25.
+# In this way, we search for the pattern from the given string.
