@@ -258,7 +258,7 @@
 # NOTE: The maximum number of levels in a tree depends upon the height of the tree.
 
 
-#.................Subtrees
+#.................Subtrees.................
 # A subtree is a portion of a tree that is derived from a specific node. This node is known as the subtree root.
 
 # The subtree retains the hierarchical relationships and structure of the original tree.
