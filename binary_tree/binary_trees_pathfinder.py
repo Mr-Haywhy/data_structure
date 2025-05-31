@@ -11,7 +11,7 @@
 # Ever thought of coding as arranging a treasure map? Why not try creating a larger tree next time, and see what new paths unfold?
 
 # Write a program to print all the paths from the root node to the leaf nodes of a given binary tree.
-#     *Define a method, print_paths(), which takes two arguments: current_node and path (where path is a list of nodes visited during traversal).
+#     *Define a method, print_paths(), which takes two      arguments: current_node and path (where path is a list of nodes visited during traversal).
 #     *Start from the root and traverse your way down to every leaf node.
 #     *While traversing, keep storing the nodes in a list.
 #     *Print the list when you reach a leaf node.
