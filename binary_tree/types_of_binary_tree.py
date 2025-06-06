@@ -127,7 +127,7 @@ class BinaryTree:
 
 
 # take user input
-input_str = input()
+input_str = "1 2 3 4 5 6 7" #input() 
 inputs = input_str.split()
 
 root, node1, node2, node3, node4, node5, node6 = [BinaryTreeNode(val.strip()) for val in inputs]
