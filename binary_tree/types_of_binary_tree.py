@@ -142,3 +142,79 @@ node2.add_right_child(node6)
 # call the function
 tree = BinaryTree(root)
 print(tree.is_full_binary_tree())
+
+
+
+
+# ...................Complete Binary Tree...................
+# A complete binary tree is a binary tree in which all the levels, except possibly the last, are completely filled, and all nodes are as far left as possible.
+
+# https://cdn.programiz.pro/course-images/dsa-with-python/dsa-11.5.6.png
+
+# ...................Perfect Binary Tree......................
+# To be a perfect binary tree, every internal node has exactly two child nodes and all the leaf nodes are at the same level.
+
+# https://cdn.programiz.pro/course-images/dsa-with-python/dsa-11.5.7.png
+
+# ..............Relationship Between Full, Complete, and Perfect Binary Tree..............
+# From the definitions, we can infer some relationships:
+
+# 1. A full binary tree is not necessarily a complete binary tree.
+
+# https://cdn.programiz.pro/course-images/dsa-with-python/dsa-11.5.8.png
+
+# This is a full binary tree, but it's not a complete binary tree because the last level is not filled from left to right.
+
+# 2. A complete binary tree is not necessarily a full binary tree.
+
+# https://cdn.programiz.pro/course-images/dsa-with-python/dsa-11.5.9.png
+
+# This is a complete binary tree, but it's not a full binary tree because there's a node with only one child.
+
+# 3. A perfect binary tree is a full and complete binary tree.
+
+# https://cdn.programiz.pro/course-images/dsa-with-python/dsa-11.5.10.png
+
+# This is a tree where all internal nodes have two children and all leaves are at the same level.
+
+# ....................Degenerate Tree.....................
+# In degenerate trees, the parent nodes have at most one child node.
+
+# This effectively transforms the tree into a linked list.
+
+# https://cdn.programiz.pro/course-images/dsa-with-python/dsa-11.5.11.png
+
+# Degenerate trees represent the worst-case scenario where search and insertion operations take linear time.
+
+# So, a degenerate tree is not something you generally aim for — it's a situation you try to avoid.
+
+# ....................Application of Binary Trees..................
+# Binary Trees are arguably the most popular variant of tree data structures and for good reasons.
+
+# We discussed a very powerful application of binary trees with expression trees during inorder traversal which are heavily used in compiler design.
+
+# On top of that, here are some standard cases in computer programming where binary trees are heavily used.
+
+# 1. Binary Decision Trees
+
+# We use these particular binary trees when we want to represent a variety of possible outcomes that can come from responding to a series of yes-or-no questions.
+
+# We represent a question with an internal node and separate the two outcomes ("Yes" and "No") into two separate child nodes.
+
+# Depending on whether the response to the question is "Yes" or "No," we move from the root to the left or right child of the current node.
+
+# We trace a path in the tree from the root to a leaf by following an edge from a parent to a child with each choice we make.
+
+# https://cdn.programiz.pro/course-images/dsa-with-python/dsa-11.5.12.png
+
+# Decision trees like the one above are a mainstay when it comes to classification and regression problems associated with Machine Learning Algorithms.
+
+# This tree in particular is used by an AI code to classify a given animal as either a Hawk, a Penguin, a Dolphin or a Bear.
+
+# 2. Spatial Partitioning
+
+# https://cdn.programiz.pro/course-images/dsa-with-python/dsa-11.5.13.png
+
+# There's a whole section of algorithms in computer graphics called spatial partitioning which uses binary trees to divide a space into smaller regions.
+
+# These algorithms perform their own operations on the tree to manipulate the space to fit their use.
