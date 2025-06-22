@@ -284,3 +284,121 @@ print(heap)
     # [6, 11, 10, 15, 19, 20, 24, 25, 16, 21]
 
 # This is the same as the heapify down operation we performed earlier.
+
+
+
+"""
+~ Insert and Delete Using Heapify
+In the previous lesson, we implemented insertion and deletion.
+
+And in this lesson, we learned about heapify-down and heapify-up.
+
+If you haven't noticed, the heapify-up operation is the same as the comparison and swaps performed in the insertion operation.
+
+~ Code to Insert Node
+    def insert(self, value):
+        self.heap.append(value)
+        index = len(self.heap) - 1
+        while self.has_parent(index) and self.heap[index] < self.heap[self.parent(index)]:
+            parent_index = self.parent(index)
+            self.swap(index, parent_index)
+            index = parent_index
+
+
+~ Code to Heapify Up
+    def heapify_up(self, index):
+        if self.has_parent(index): 
+            parent_index = self.parent(index)
+            if self.heap[index] < self.heap[self.parent(index)]:
+                self.swap(index, parent_index)
+                self.heapify_up(parent_index)
+
+Similarly, the heapify-down operation is the same as the comparison and swaps performed in the deletion operation.
+
+~Code to Extract Min
+
+    def extract_min(self):
+        min = self.heap[0]
+        if self.size() == 1:
+            self.heap = []
+            return min
+        self.heap[0] = self.heap[-1]
+        self.heap.pop()
+        index = 0
+        while True:
+            if not self.has_left_child(index):
+                break
+            smaller_child_index = self.left_child(index)
+            if self.has_right_child(index): 
+                if self.heap[self.right_child(index)] < self.heap[self.left_child(index)]:
+                    smaller_child_index = self.right_child(index)
+            if self.heap[index] <= self.heap[smaller_child_index]:
+                break 
+            self.swap(index, smaller_child_index)
+            index = smaller_child_index
+        return min
+
+~ Code to Heapify Down
+
+    def heapify_down(self, index):
+        if not self.has_left_child(index):
+            return
+        smaller_child_index = self.left_child(index)
+        if self.has_right_child(index) and self.heap[self.right_child(index)] < self.heap[smaller_child_index]:
+            smaller_child_index = self.right_child(index)
+        if self.heap[index] <= self.heap[smaller_child_index]:
+            return
+        self.swap(index, smaller_child_index)
+        self.heapify_down(smaller_child_index)
+
+So, instead of coding the same logic twice in two operations, we can simply call heapify_up() in insert() and heapify_down() in delete().
+"""
+
+
+# Example: Insert and Delete with Heapify
+# insert into heap
+def insert(self, value):
+    self.heap.append(value)
+    # replace with heapify_up() logic
+    self.heapify_up(self.size() - 1)
+
+# extract min from heap
+def extract_min(self):
+    min = self.heap[0]
+    if self.size() == 1:    
+        self.heap = []
+        return min
+    self.heap[0] = self.heap[-1] 
+    self.heap.pop()  
+    # replace with heapify_down() logic
+    self.heapify_down(0)
+    return min
+
+
+"""
+Output:
+    [10, 30, 20, 40]
+    Root: 10
+    Root: 10
+    [20, 30, 40]
+"""
+
+
+"""
+~ Complexity Analysis of Heapify
+As seen from the previous examples, heapify is a much more efficient method to perform various operations on a heap.
+
+The number of heapify required to restore the heap property after removing the root depends on the levels you need to move down.
+
+As such, we get the following time and space complexities:
+
+Best Case Time Complexity	    O(1)
+Worst Case Time Complexity	    O(logn)
+Average Case Time Complexity	O(logn)
+Space Complexity	            O(1)
+
+
+This marks the end of binary heap operations for this course.
+
+Next, we will learn about heap sort.
+"""
