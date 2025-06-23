@@ -152,7 +152,7 @@ def heap_sort(lst):
     return sorted_array
 
     # Descending Heap Sort
-    #return sorted_array[:: -1]  
+    # return sorted_array[:: -1]  
 
 
 lst = [15, 12, 25, 16, 5]
