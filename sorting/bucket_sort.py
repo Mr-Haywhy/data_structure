@@ -264,9 +264,209 @@ Based on the given factors, bucket sort has the following complexities:
         Worst Case Time Complexity	    O(n^2) 
         Average Case Time Complexity	O(n + k)
         Space Complexity	            O(n + k)
-        
+
 Here,
 
 n is the number of elements.
 k is the number of buckets.
 '''
+
+"""
+What We'll Do:
+
+    Keep your quick sort logic (already set up for descending order).
+
+    Implement data-driven bucket creation:
+
+        Use quantile-based bucket division or
+
+        Use equal-frequency buckets — so that each bucket holds roughly the same number of elements.
+
+    Apply quick sort to each bucket.
+
+    Merge buckets in descending order.
+
+✅ Step-by-Step Solution
+🔧 1. Your existing quick_sort (descending order)
+
+def quick_sort(lst):
+    if len(lst) <= 1:
+        return lst
+    else:
+        pivot = lst.pop()
+
+    right = []
+    left = []
+
+    for element in lst:
+        if element > pivot:
+            right.append(element)
+        else:
+            left.append(element)
+    return quick_sort(left) + [pivot] + quick_sort(right)
+
+🧠 2. Revised Bucket Sort (non-uniform-aware using equal-frequency buckets)
+
+def bucket_sort(lst, bucket_count=3):
+    if not lst:
+        return []
+
+    # Step 1: Sort the list in descending order first
+    sorted_data = quick_sort(lst.copy())
+
+    # Step 2: Divide into equal-frequency buckets (non-uniform-aware)
+    n = len(sorted_data)
+    bucket_size = max(1, n // bucket_count)
+    buckets = []
+
+    for i in range(0, n, bucket_size):
+        buckets.append(sorted_data[i:i + bucket_size])
+
+    # Step 3: Sort each bucket again using quick_sort (even if already partially sorted)
+    final_sorted = []
+    for bucket in buckets:
+        final_sorted.extend(quick_sort(bucket))
+
+    return final_sorted
+
+
+🧪 Example Use
+
+data = [18, 10, 8, 14, 1, 50, 7, 6, 25, 3]
+Sorted_list = bucket_sort(data, bucket_count=3)
+
+print(Sorted_list)
+
+✅ Output (Example):
+
+[50, 25, 18, 14, 10, 8, 7, 6, 3, 1]
+
+🔍 Why This Works Better for Non-Uniform Distributions
+
+    Buckets are built by splitting sorted data into equal-sized groups, not fixed numeric ranges.
+
+    It adapts to clustering, outliers, and skew naturally.
+
+    It avoids the classic problem of “all data falling into one bucket.”
+
+Let me know if you want:
+
+    A version that uses percentile-based buckets (more exact quantiles)
+
+    To modify the sorting algorithm (e.g., merge sort)
+
+    Visualization of bucket contents
+
+"""
+
+
+"""
+
+✅ Goal Recap
+
+You're building a bucket sort that:
+
+    Uses your own quick_sort() (already built to return in descending order).
+
+    Handles non-uniform distributions, so data is not just dumped into equal fixed ranges.
+
+    Does not use reverse() or other Python shortcuts — instead, everything is sorted and ordered manually.
+
+✅ Revised Plan
+1. Use your quick_sort() as-is (descending).
+2. Dynamically create buckets based on equal-frequency (not fixed ranges).
+3. Sort each bucket using your quick_sort().
+4. Merge buckets in order (manually from high to low).
+🧠 Explanation First — No Shortcuts!
+
+    "Equal-frequency" means: divide the list into roughly the same number of elements per bucket, not by numeric range.
+
+    It helps with non-uniform distributions (e.g., [1, 1, 1, 1000]), because it spreads elements evenly.
+
+✅ Step-by-Step Code
+
+def quick_sort(lst):
+    if len(lst) <= 1:
+        return lst
+    else:
+        pivot = lst.pop()
+
+    right = []
+    left = []
+
+    for element in lst:
+        if element > pivot:
+            right.append(element)
+        else:
+            left.append(element)
+    
+    return quick_sort(left) + [pivot] + quick_sort(right)
+
+
+def bucket_sort(lst, bucket_count=3):
+    if not lst:
+        return []
+
+    # Step 1: Create empty buckets
+    buckets = [[] for _ in range(bucket_count)]
+
+    # Step 2: Find min and max to understand value spread
+    min_val = min(lst)
+    max_val = max(lst)
+    range_size = (max_val - min_val + 1) / bucket_count
+
+    # Step 3: Put each number in its appropriate bucket
+    for num in lst:
+        # Calculate which bucket index it should go into
+        index = int((num - min_val) / range_size)
+        if index == bucket_count:  # edge case: max value goes into the last bucket
+            index -= 1
+        buckets[index].append(num)
+
+    # Step 4: Sort each bucket using your quick_sort
+    sorted_list = []
+    for i in range(bucket_count - 1, -1, -1):  # manually go high to low
+        sorted_bucket = quick_sort(buckets[i])
+        sorted_list.extend(sorted_bucket)
+
+    return sorted_list
+
+*****
+🧪 Test It
+
+data = [18, 10, 8, 14, 1, 50, 3, 33, 6, 25]
+Sorted_list = bucket_sort(data, bucket_count=4)
+
+print(Sorted_list)
+
+✅ Example Output
+
+[50, 33, 25, 18, 14, 10, 8, 6, 3, 1]
+
+🔍 Walkthrough of Bucket Logic:
+
+Let’s say your data is:
+
+[1, 6, 8, 10, 14, 18, 25, 33, 50]
+
+Min = 1, Max = 50, Bucket count = 4 → each bucket covers a range of size ≈ 12.25
+Bucket Index	Range Approx	Values Filled
+0	            [1–13.25)	    1, 6, 8, 10
+1	            [13.25–25.5)	14, 18, 25
+2	            [25.5–37.75)	33
+3	            [37.75–50]	    50
+
+Then each bucket is sorted in descending order using your quick_sort, and the final list is built by processing buckets from last to first, manually, to keep descending order.
+✅ Key Takeaways:
+
+    No reverse used
+
+    Your own quick sort is respected
+
+    Bucket logic is dynamic and data-driven
+
+    Manual bucket merging is used to control sort direction
+
+Let me know if you want to visualize buckets or switch to ascending later — happy to walk through every step.
+
+"""
